@@ -2,74 +2,52 @@ package com.example.javaform;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class HelloController {
     @FXML
-    private TextField price = new TextField();
+    private TextField name = new TextField();
     @FXML
-    private TextField quantity = new TextField();
+    private TextField lastname = new TextField();
     @FXML
-    private TextField total = new TextField();
-
+    private TextField username = new TextField();
     @FXML
-    private TextField discount = new TextField();
-
+    private TextField email = new TextField();
     @FXML
-    private TextField totalToPay = new TextField();
-
-
+    private TextField cellphone = new TextField();
     @FXML
-    private TextField payment = new TextField();
+    private TextField password = new TextField();
 
     @FXML
-    private TextField change = new TextField();
-
-    double mPrice;
-    double mQuantity;
-    double mTotal;
-    double mDiscount;
-    double mTotalToPay;
-    double mPayment;
-    double mChange;
+    private TextArea textArea = new TextArea();
 
     @FXML
-    protected void calculate() {
-        mPrice = Double.parseDouble(price.getText());
-        mQuantity = Double.parseDouble(quantity.getText());
-        mTotal = mPrice * mQuantity;
-        total.setText(Double.toString(mTotal));
+    protected void getUserModel() {
 
-        if (mTotal > 200) {
-            mDiscount = mTotal * 0.35;
-            discount.setText(Double.toString(mDiscount));
-        } else {
-            mDiscount = 0;
-            discount.setText(Double.toString(mDiscount));
-        }
+        UserModel user  = new UserModel(
 
-        mTotalToPay = mTotal - mDiscount;
-        totalToPay.setText(Double.toString(mTotalToPay));
-    }
+                name.getText(),
+                lastname.getText(),
+                username.getText(),
+                email.getText(),
+                cellphone.getText(),
+                password.getText()
+        );
 
-    @FXML
-    protected void processPayment() {
-        mPayment = Double.parseDouble(payment.getText());
-        mChange = mPayment - mTotalToPay;
-
-
-        change.setText(Double.toString(mChange));
+        textArea.setText("Nombre: " + user.name + "\nApellido: " + user.lastname + "\nNombre de Usuario:  " + user.username + "\nCorreo: " + user.email + "\nNumero de telefono  " + user.cellphone + "\nContrasena:  " + user.password);
     }
 
     @FXML
     protected void cleanForm() {
 
-          price.setText("");
-          quantity.setText("");
-          total.setText("");
-          discount.setText("");
-          totalToPay.setText("");
-          payment.setText("");
-          change.setText("");
+        name.setText("");
+        lastname.setText("");
+        username.setText("");
+        email.setText("");
+        cellphone.setText("");
+        password.setText("");
+        textArea.setText("");
+
     }
 }
